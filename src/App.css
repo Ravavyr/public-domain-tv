@@ -1,0 +1,28 @@
+
+*{box-sizing: border-box; }
+html, body{ background: transparent; margin:0; padding:0; }
+.hidden{opacity:0;}
+
+.tv-container{width:100%; position:relative;}
+.tv-box{position:relative; width:416px; height:auto; margin:0 auto; z-index:1;pointer-events:none;}
+.cartoon-video{ position:absolute;top:133px; width:350px; height:300px; left:0; border:none; z-index:-1;pointer-events: auto; background:url('./images/tv-parts/glass.png') no-repeat; background-size:cover;}
+.cartoon-tv{width:100%; max-width:100%; pointer-events:none;}
+.static-audio{opacity:0;}
+
+.controls.off{display:none;}
+.on-off-btn{background:transparent; border:none; position:absolute; top:157px; left:331px; background:transparent; border:none; cursor:pointer;pointer-events:auto; transition:all 0.2s;}
+.on-off-btn.on{transform:rotate(90deg);}
+.on-off-knob{width:55px;}
+.channel-knob-btn{ background:transparent; border:none; position:absolute; top:229px; left:331px; background:transparent; border:none; cursor:pointer;pointer-events: auto; transition:all 0.2s;}
+.channel-knob{width:55px;}
+.channel{position:absolute; top:295px; right:0; width:108px; text-align:center; color:#fff; font-size:24px; font-family: "AtomicAge-Regular";}
+
+.left-arr-btn{background:transparent; border:none; position:absolute; top:294px; left:318px; background:transparent; border:none; cursor:pointer;pointer-events: auto;}
+.left-arr-knob{width:26px;}
+
+.play-pause-btn{background:transparent; border:none; position:absolute; top:294px; left:346px; background:transparent; border:none; cursor:pointer;pointer-events: auto;}
+.play-pause-knob{width:26px;}
+
+.right-arr-btn{background:transparent; border:none; position:absolute; top:294px; left:374px; background:transparent; border:none; cursor:pointer;pointer-events: auto;}
+.right-arr-knob{width:26px;}
+
