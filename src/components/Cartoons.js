@@ -32,7 +32,9 @@ export default function Cartoons() {
     /*Set First Movie*/
     const [currentmovie, setMovie] = React.useState({
         'channel':0,
-        'url':data[0].url,
+        'link':data[0].link,
+        'title':data[0].title,
+        'year':data[0].year,
         'rotate':'rotate(0deg)'
     })
 
@@ -41,7 +43,7 @@ export default function Cartoons() {
         'action':'',
         'playstate':true,
         'playpause':false,
-        'currentmovie':currentmovie.url,
+        'currentmovie':currentmovie.link,
         'volume':0.5
     });
 
@@ -56,8 +58,10 @@ export default function Cartoons() {
     function decreaseChannel() {
         if(videostate.playstate){
             let newchannel = (currentmovie.channel-1>0?currentmovie.channel-1:0);
-            setMovie({'channel':newchannel,'url':data[newchannel].url,'rotate':'rotate('+(newchannel*18)+'deg)'});
-            setAll({...videostate,'action':'movie','currentmovie':data[newchannel].url});
+            if(data[newchannel]){
+                setMovie({'channel':newchannel,'link':data[newchannel].link,'title':data[newchannel].title,'year':data[newchannel].year,'rotate':'rotate('+(newchannel*18)+'deg)'});
+                setAll({...videostate,'action':'movie','currentmovie':data[newchannel].link});
+            }
         }
     }
 
@@ -65,16 +69,20 @@ export default function Cartoons() {
     function increaseChannel(){
         if(videostate.playstate){
             let newchannel = (currentmovie.channel+1===data.length?0:currentmovie.channel+1);
-            setMovie({'channel':newchannel,'url':data[newchannel].url,'rotate':'rotate('+(newchannel*18)+'deg)'});
-            setAll({...videostate,'action':'movie','currentmovie':data[newchannel].url});
+            if(data[newchannel]){
+                setMovie({'channel':newchannel,'link':data[newchannel].link,'title':data[newchannel].title,'year':data[newchannel].year,'rotate':'rotate('+(newchannel*18)+'deg)'});
+                setAll({...videostate,'action':'movie','currentmovie':data[newchannel].link});
+            }
         }
     }
 
     /*go to specific channel*/
     function setChannel(){
         let newchannel = document.querySelector(".channel-btn").getAttribute("data-channel");
-        setMovie({'channel':newchannel,'url':data[newchannel].url,'rotate':'rotate('+(newchannel*18)+'deg)'});
-        setAll({...videostate,'action':'movie','currentmovie':data[newchannel].url});
+        if(data[newchannel]){
+            setMovie({'channel':newchannel,'link':data[newchannel].link,'title':data[newchannel].title,'year':data[newchannel].year,'rotate':'rotate('+(newchannel*18)+'deg)'});
+            setAll({...videostate,'action':'movie','currentmovie':data[newchannel].link});
+        }
     }
 
     /*set specific volume*/
@@ -130,6 +138,10 @@ export default function Cartoons() {
                 <button className="right-arr-btn" onClick={increaseChannel}></button>
                 <button className="channel-btn" data-channel={currentmovie.channel} onClick={setChannel}></button>
                 <button className="volume-btn" data-volume={currentmovie.volume} onClick={setVolume}></button>
+            </div>
+            <div className={`vcr ${(!videostate.playstate?'off':'')}`}>
+                <span className="title">{(currentmovie.title!=''?currentmovie.title:'')}</span>
+                <span className="year">{(currentmovie.year!==''?`(${currentmovie.year})`:'')}</span>
             </div>
         </div>
     )

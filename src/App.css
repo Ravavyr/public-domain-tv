@@ -26,3 +26,7 @@ html, body{ background: transparent; margin:0; padding:0; }
 .right-arr-btn{background:transparent; border:none; position:absolute; top:294px; left:374px; background:transparent; border:none; cursor:pointer;pointer-events: auto;}
 .right-arr-knob{width:26px;}
 
+.vcr{position:absolute; top:415px; left:43px; display:flex; justify-content:center; align-items:flex-start; width:264px; padding:2px 4px 2px 24px; border:1px solid #333; border-radius:4px; background:#333;}
+.vcr.off{display:none;}
+.vcr .title{ font-size:16px; color:#333; width:220px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:2px 10px 2px 8px; background:#fff;}
+.vcr .year{ font-size:16px; color:#333; background:#fff; padding:2px;}
